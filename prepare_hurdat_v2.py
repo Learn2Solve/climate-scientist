@@ -37,7 +37,13 @@ SEASON_MAX = 2022
 def build_samples():
     samples = []
 
-    for storm_id in basin.keys():
+    # Older/newer tropycal versions expose `keys` as a list attribute instead of a method.
+    try:
+        storm_ids = basin.keys()
+    except TypeError:
+        storm_ids = basin.keys
+
+    for storm_id in storm_ids:
         storm = basin.get_storm(storm_id)
 
         # Storm 的年份，tropycal 里是属性 year 或 attrs["year"]
