@@ -108,8 +108,8 @@ def call_model(
     model: str,
     temperature: float = 0.4,
     max_tokens: int = 800,
-) -> str:
-    """Call DeepSeek-V3.2-Speciale and return the raw content string."""
+) -> object:
+    """Call DeepSeek-V3.2-Speciale and return the raw response object."""
     api_key = load_env_key()
     if not api_key:
         raise SystemExit("Set DEEPSEEK_API_KEY in your environment.")
@@ -142,13 +142,13 @@ def call_model(
                     temperature=temperature,
                     max_tokens=max_tokens,
                 )
-                return resp.choices[0].message.content
+                return resp
             except Exception:
                 pass
         raise SystemExit(f"API call failed: {exc}\n"
                          f"(base_url tried: {base_url}"
                          f"{' and ' + alt_url if alt_url else ''}, model={model})") from exc
-    return resp.choices[0].message.content
+    return resp
 
 
 def demo_payload() -> tuple[Mapping[str, str | float], Mapping[str, str | float], Mapping[str, str | float], list[Mapping[str, str | float]], list[str]]:
@@ -190,7 +190,7 @@ def main():
     parser = argparse.ArgumentParser(description="DeepSeek-V3.2-Speciale hurricane forecaster MVP (no finetune).")
     parser.add_argument("--preview", action="store_true", help="Only print the prompt instead of calling the API.")
     parser.add_argument("--temperature", type=float, default=0.4)
-    parser.add_argument("--max-tokens", type=int, default=800)
+    parser.add_argument("--max-tokens", type=int, default=4096)
     parser.add_argument("--base-url", type=str, default=os.environ.get("DEEPSEEK_BASE_URL", DEFAULT_BASE_URL),
                         help="Override DeepSeek base URL (env DEEPSEEK_BASE_URL also supported).")
     parser.add_argument("--model", type=str, default=os.environ.get("DEEPSEEK_MODEL", DEFAULT_MODEL),
@@ -205,23 +205,38 @@ def main():
         print(prompt)
         return
 
-    output = call_model(
+    resp = call_model(
         prompt,
         base_url=args.base_url,
         model=args.model,
         temperature=args.temperature,
         max_tokens=args.max_tokens,
     )
+    choice = resp.choices[0]
+    content = (choice.message.content or "").strip()
+    reasoning = (getattr(choice.message, "reasoning_content", "") or "").strip()
+    finish_reason = choice.finish_reason
+
     print("----- MODEL OUTPUT -----")
-    print(output)
+    if content:
+        print(content)
+    else:
+        print("[empty content from model]")
+
+    if reasoning:
+        print("\n----- MODEL REASONING -----")
+        print(reasoning)
 
     # Optional: try to parse JSON block if the model obeys.
     try:
-        parsed = json.loads(output)
+        parsed = json.loads(content)
         print("\nParsed JSON:")
         print(json.dumps(parsed, indent=2))
     except json.JSONDecodeError:
-        pass
+        if finish_reason == "length":
+            print("\n[warn] finish_reason=length: increase --max-tokens (e.g., 8192) or simplify prompt.")
+        else:
+            print("\n[warn] could not parse JSON; check content above.")
 
 
 if __name__ == "__main__":
