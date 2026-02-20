@@ -1,0 +1,35 @@
+{
+  "train": {
+    "samples": 9475,
+    "track_mae_km": {
+      "mean": 521.2988407924406,
+      "median": 455.28628897037487
+    },
+    "wind_mae_kt": {
+      "mean": 11.515039577836411,
+      "median": 10.0
+    }
+  },
+  "val": {
+    "samples": 1478,
+    "track_mae_km": {
+      "mean": 507.793457855082,
+      "median": 434.56467512586414
+    },
+    "wind_mae_kt": {
+      "mean": 11.376860622462788,
+      "median": 10.0
+    }
+  },
+  "test": {
+    "samples": 1514,
+    "track_mae_km": {
+      "mean": 508.6660635407327,
+      "median": 457.04314301998147
+    },
+    "wind_mae_kt": {
+      "mean": 11.984808454425364,
+      "median": 10.0
+    }
+  }
+}

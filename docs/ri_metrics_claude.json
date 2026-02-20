@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "lead_hours": 24,
+    "threshold_kt": 30.0,
+    "samples": 200,
+    "valid_wind_pred_rate": 1.0
+  },
+  "truth": {
+    "ri_samples": 18,
+    "ri_rate": 0.09
+  },
+  "pred": {
+    "tp": 2,
+    "fp": 3,
+    "fn": 16,
+    "tn": 179,
+    "precision": 0.4,
+    "recall": 0.1111111111111111,
+    "f1": 0.1739130434782609,
+    "accuracy": 0.905
+  },
+  "wind_mae": {
+    "all": 18.191315555555555,
+    "ri": 31.231895061728395,
+    "non_ri": 16.901587912087912,
+    "n_valid": 200,
+    "n_valid_ri": 18,
+    "n_valid_non_ri": 182
+  }
+}
