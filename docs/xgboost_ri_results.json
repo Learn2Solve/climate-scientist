@@ -1,0 +1,159 @@
+{
+  "experiment": "HURDAT2 XGBoost RI Classification",
+  "date": "2026-02-20",
+  "agent": "climate_researcher",
+  "data": {
+    "total_samples": 12467,
+    "ri_events": 474,
+    "ri_rate": 0.03802,
+    "train_size": 9475,
+    "val_size": 1478,
+    "test_size": 1514,
+    "features": [
+      "last_wind",
+      "last_lat",
+      "last_lon",
+      "abs_lat",
+      "abs_lon",
+      "season"
+    ],
+    "seasons": "1980-2022"
+  },
+  "logistic_regression": {
+    "tp": 54,
+    "fp": 490,
+    "fn": 6,
+    "tn": 964,
+    "precision": 0.0993,
+    "recall": 0.9,
+    "f1": 0.1788,
+    "accuracy": 0.6724,
+    "auc_roc": 0.7936,
+    "brier": 0.1927
+  },
+  "gradientboosting_(sklearn_fallback)": {
+    "best_threshold": 0.1,
+    "test_metrics": {
+      "tp": 25,
+      "fp": 231,
+      "fn": 35,
+      "tn": 1223,
+      "precision": 0.0977,
+      "recall": 0.4167,
+      "f1": 0.1582,
+      "accuracy": 0.8243,
+      "auc_roc": 0.7157,
+      "brier": 0.0424
+    },
+    "threshold_sweep": {
+      "0.1": {
+        "tp": 25,
+        "fp": 231,
+        "fn": 35,
+        "tn": 1223,
+        "precision": 0.0977,
+        "recall": 0.4167,
+        "f1": 0.1582,
+        "accuracy": 0.8243,
+        "auc_roc": 0.7157,
+        "brier": 0.0424
+      },
+      "0.15": {
+        "tp": 12,
+        "fp": 161,
+        "fn": 48,
+        "tn": 1293,
+        "precision": 0.0694,
+        "recall": 0.2,
+        "f1": 0.103,
+        "accuracy": 0.862,
+        "auc_roc": 0.7157,
+        "brier": 0.0424
+      },
+      "0.2": {
+        "tp": 10,
+        "fp": 108,
+        "fn": 50,
+        "tn": 1346,
+        "precision": 0.0847,
+        "recall": 0.1667,
+        "f1": 0.1124,
+        "accuracy": 0.8956,
+        "auc_roc": 0.7157,
+        "brier": 0.0424
+      },
+      "0.25": {
+        "tp": 5,
+        "fp": 73,
+        "fn": 55,
+        "tn": 1381,
+        "precision": 0.0641,
+        "recall": 0.0833,
+        "f1": 0.0725,
+        "accuracy": 0.9155,
+        "auc_roc": 0.7157,
+        "brier": 0.0424
+      },
+      "0.3": {
+        "tp": 3,
+        "fp": 48,
+        "fn": 57,
+        "tn": 1406,
+        "precision": 0.0588,
+        "recall": 0.05,
+        "f1": 0.0541,
+        "accuracy": 0.9306,
+        "auc_roc": 0.7157,
+        "brier": 0.0424
+      },
+      "0.35": {
+        "tp": 3,
+        "fp": 34,
+        "fn": 57,
+        "tn": 1420,
+        "precision": 0.0811,
+        "recall": 0.05,
+        "f1": 0.0619,
+        "accuracy": 0.9399,
+        "auc_roc": 0.7157,
+        "brier": 0.0424
+      },
+      "0.4": {
+        "tp": 2,
+        "fp": 21,
+        "fn": 58,
+        "tn": 1433,
+        "precision": 0.087,
+        "recall": 0.0333,
+        "f1": 0.0482,
+        "accuracy": 0.9478,
+        "auc_roc": 0.7157,
+        "brier": 0.0424
+      },
+      "0.5": {
+        "tp": 1,
+        "fp": 4,
+        "fn": 59,
+        "tn": 1450,
+        "precision": 0.2,
+        "recall": 0.0167,
+        "f1": 0.0308,
+        "accuracy": 0.9584,
+        "auc_roc": 0.7157,
+        "brier": 0.0424
+      }
+    }
+  },
+  "random_forest": {
+    "tp": 52,
+    "fp": 351,
+    "fn": 8,
+    "tn": 1103,
+    "precision": 0.129,
+    "recall": 0.8667,
+    "f1": 0.2246,
+    "accuracy": 0.7629,
+    "auc_roc": 0.8495,
+    "brier": 0.0665
+  }
+}

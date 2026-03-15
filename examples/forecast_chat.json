@@ -1,0 +1,48 @@
+----- MODEL OUTPUT -----
+{
+    "forecast": [
+        {"lead_hours": 24, "lat": 29.0, "lon": -85.5, "wind": 25.0},
+        {"lead_hours": 48, "lat": 28.5, "lon": -88.0, "wind": 30.0},
+        {"lead_hours": 72, "lat": 28.0, "lon": -90.5, "wind": 35.0}
+    ],
+    "reasoning": "Based on recent westward motion averaging 1.0° longitude per 6h with slight southward drift, steering suggests continued WSW track. Weak shear and warm Gulf waters support gradual intensification. Climatology for July tropical depressions in this region shows typical intensification to tropical storm strength within 72h as systems move over warmer waters."
+}
+
+----- TOKEN USAGE -----
+{
+  "completion_tokens": 188,
+  "prompt_tokens": 711,
+  "total_tokens": 899,
+  "completion_tokens_details": null,
+  "prompt_tokens_details": {
+    "audio_tokens": null,
+    "cached_tokens": 0
+  },
+  "prompt_cache_hit_tokens": 0,
+  "prompt_cache_miss_tokens": 711
+}
+
+Parsed JSON:
+{
+  "forecast": [
+    {
+      "lead_hours": 24,
+      "lat": 29.0,
+      "lon": -85.5,
+      "wind": 25.0
+    },
+    {
+      "lead_hours": 48,
+      "lat": 28.5,
+      "lon": -88.0,
+      "wind": 30.0
+    },
+    {
+      "lead_hours": 72,
+      "lat": 28.0,
+      "lon": -90.5,
+      "wind": 35.0
+    }
+  ],
+  "reasoning": "Based on recent westward motion averaging 1.0\u00b0 longitude per 6h with slight southward drift, steering suggests continued WSW track. Weak shear and warm Gulf waters support gradual intensification. Climatology for July tropical depressions in this region shows typical intensification to tropical storm strength within 72h as systems move over warmer waters."
+}

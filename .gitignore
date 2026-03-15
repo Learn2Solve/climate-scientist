@@ -1,2 +1,23 @@
 __pycache__/
 .env
+.venv/
+.DS_Store
+.agent/
+
+# Data outputs (regenerable)
+sim_outputs/
+sim_outputs_agent/
+sim_outputs_reasoner/
+sim_outputs_ttm/
+sim_outputs_ttm_aligned/
+hurdat2_llm_toy/
+results/
+runs/
+
+# Large/binary files
+*.pdf
+docs/email_attachments/
+
+# Misc
+climate
+docs/test*.txt

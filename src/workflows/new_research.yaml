@@ -1,0 +1,7 @@
+name: new_research
+description: "Placeholder: define research space and run controlled exploration."
+steps:
+  - id: not_implemented
+    type: note
+    message: "New research workflow not implemented in MVP; scaffold exists for future extension."
+

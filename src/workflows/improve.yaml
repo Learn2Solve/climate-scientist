@@ -1,0 +1,7 @@
+name: improve
+description: "Placeholder: automatic ablation + reproducible improvement loop."
+steps:
+  - id: not_implemented
+    type: note
+    message: "Improve workflow not implemented in MVP; start from reproduce + manual iteration."
+

@@ -1,0 +1,16 @@
+name: reproduce_hurdat2
+description: "Reproduce HURDAT2 48h-history -> 24h persistence baseline from the toy parquet."
+data_files:
+  - "{data}/all_samples.parquet"
+steps:
+  - id: verify_inputs
+    type: verify
+    checks:
+      - path_exists: "{data}/all_samples.parquet"
+
+  - id: persistence_baseline
+    type: shell
+    cmd: "{python} src/hurdat2_baseline.py --parquet \"{data}/all_samples.parquet\" --out-json \"{run_dir}/metrics.json\""
+    outputs:
+      - "{run_dir}/metrics.json"
+

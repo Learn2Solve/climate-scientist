@@ -1,0 +1,45 @@
+{
+  "storm": {
+    "id": "AL011980",
+    "basin": "Atlantic",
+    "time": "1980-07-18T18:00:00",
+    "lat": 29.4,
+    "lon": -83.0,
+    "wind": 20.0,
+    "pressure": "unknown",
+    "motion": "unknown"
+  },
+  "environment": {
+    "Past 48h track/intensity (6-hourly)": "1980-07-17 00:00 UTC: lat 30.5N, lon 76.5W, max wind 20 kt, status TD\n1980-07-17 06:00 UTC: lat 30.2N, lon 77.2W, max wind 25 kt, status TD\n1980-07-17 12:00 UTC: lat 30.0N, lon 78.0W, max wind 25 kt, status TD\n1980-07-17 18:00 UTC: lat 29.9N, lon 79.3W, max wind 25 kt, status TD\n1980-07-18 00:00 UTC: lat 29.8N, lon 80.2W, max wind 25 kt, status TD\n1980-07-18 06:00 UTC: lat 29.5N, lon 81.1W, max wind 25 kt, status TD\n1980-07-18 12:00 UTC: lat 29.5N, lon 82.0W, max wind 20 kt, status TD\n1980-07-18 18:00 UTC: lat 29.4N, lon 83.0W, max wind 20 kt, status TD"
+  },
+  "domain_knowledge": {
+    "Context": "The storm is in the Atlantic Ocean and is a tropical depression."
+  },
+  "tool_sets": {
+    "weather_tools": {
+      "type": "function",
+      "function": {
+        "name": "get_weather",
+        "description": "Get the weather for a given location",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "The location to get the weather for"
+            }
+          }
+        }
+      }
+    } 
+  },
+  
+  "large_scale": {
+    "Context": "Large-scale pattern not included in this toy dataset; model should lean mainly on the recent track/intensity history."
+  },
+  "analogs": [],
+  "guidance": [
+    "Focus on the extracted 48h HURDAT2 track and intensity history.",
+    "Produce 24h/48h/72h forecasts consistent with the recent motion and climatology."
+  ]
+}

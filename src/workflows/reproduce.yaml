@@ -1,0 +1,30 @@
+name: reproduce
+description: "Reproduce 24/48/72h baseline metrics on a payloads/truth JSONL dataset."
+data_files:
+  - "{data}/payloads.jsonl"
+  - "{data}/truth.jsonl"
+steps:
+  - id: verify_inputs
+    type: verify
+    checks:
+      - path_exists: "{data}/payloads.jsonl"
+      - path_exists: "{data}/truth.jsonl"
+
+  - id: baseline_persistence
+    type: shell
+    cmd: "{python} src/baselines.py --payloads \"{data}/payloads.jsonl\" --method persistence --out \"{run_dir}/artifacts/persistence.jsonl\""
+    outputs:
+      - "{run_dir}/artifacts/persistence.jsonl"
+
+  - id: baseline_kinematic
+    type: shell
+    cmd: "{python} src/baselines.py --payloads \"{data}/payloads.jsonl\" --method kinematic --out \"{run_dir}/artifacts/kinematic.jsonl\""
+    outputs:
+      - "{run_dir}/artifacts/kinematic.jsonl"
+
+  - id: score
+    type: shell
+    cmd: "{python} src/report_metrics.py --truth \"{data}/truth.jsonl\" --model \"persistence:{run_dir}/artifacts/persistence.jsonl\" --model \"kinematic:{run_dir}/artifacts/kinematic.jsonl\" --out-json \"{run_dir}/metrics.json\""
+    outputs:
+      - "{run_dir}/metrics.json"
+
